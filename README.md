@@ -1,5 +1,4 @@
 # **Touchdown**
 ## Optimizing NFL Fantasy Football Teams Using Machine Learning
-[[https://raw.githubusercontent.com/atangent/fantasy_sport/img/banner.jpg]]
- 
+![Alt text](img/banner.jpg?raw=true "NFL Fantasy Football Banner") 
  

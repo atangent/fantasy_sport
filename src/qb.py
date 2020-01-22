@@ -6,8 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn import metrics
 
-data2013 = pd.read_csv("C:/Users/adamf/PycharmProjects/QMind QB/qmind-fantasy-football/data/"
-                       "QB Stats/2013_QBPassing_stats.csv")
+data2013 = pd.read_csv("../qmind-fantasy-football/data/QB Stats/2013_QBPassing_stats.csv")
 
 data2014 = pd.read_csv("../qmind-fantasy-football/data/QB Stats/2014_QBPassing_stats.csv")
 

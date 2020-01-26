@@ -22,7 +22,5 @@ csv2017 = pd.read_csv("../data/Receiving "
 csv2018 = pd.read_csv("../data/Receiving "
                        "Stats/2018_Receiving_stats.csv")
 
-# Concatenate arrays side by side
-df1314 = pd.concat([csv2013, csv2014], axis=1)
-
 # Join dataframes based on unique player id
+df1314 = pd.merge(csv2013, csv2014, how="left", on=["Player", "Player"])

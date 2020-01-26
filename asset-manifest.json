@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.d1b05096.chunk.css",
-    "main.js": "/static/js/main.2b947abb.chunk.js",
-    "main.js.map": "/static/js/main.2b947abb.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.2997142c.js",
-    "runtime-main.js.map": "/static/js/runtime-main.2997142c.js.map",
-    "static/js/2.dc4c3278.chunk.js": "/static/js/2.dc4c3278.chunk.js",
-    "static/js/2.dc4c3278.chunk.js.map": "/static/js/2.dc4c3278.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.b847a96486223c96961ff0a4ee9ecafa.js": "/precache-manifest.b847a96486223c96961ff0a4ee9ecafa.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.d1b05096.chunk.css.map": "/static/css/main.d1b05096.chunk.css.map",
-    "static/js/2.dc4c3278.chunk.js.LICENSE": "/static/js/2.dc4c3278.chunk.js.LICENSE",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
+    "main.css": "/qmind-fantasy-football/static/css/main.d1b05096.chunk.css",
+    "main.js": "/qmind-fantasy-football/static/js/main.ee77b717.chunk.js",
+    "main.js.map": "/qmind-fantasy-football/static/js/main.ee77b717.chunk.js.map",
+    "runtime-main.js": "/qmind-fantasy-football/static/js/runtime-main.5e6c83b8.js",
+    "runtime-main.js.map": "/qmind-fantasy-football/static/js/runtime-main.5e6c83b8.js.map",
+    "static/js/2.dc4c3278.chunk.js": "/qmind-fantasy-football/static/js/2.dc4c3278.chunk.js",
+    "static/js/2.dc4c3278.chunk.js.map": "/qmind-fantasy-football/static/js/2.dc4c3278.chunk.js.map",
+    "index.html": "/qmind-fantasy-football/index.html",
+    "precache-manifest.04bab66d4d76a60a4a3153ed457b72ef.js": "/qmind-fantasy-football/precache-manifest.04bab66d4d76a60a4a3153ed457b72ef.js",
+    "service-worker.js": "/qmind-fantasy-football/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/qmind-fantasy-football/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.dc4c3278.chunk.js.LICENSE": "/qmind-fantasy-football/static/js/2.dc4c3278.chunk.js.LICENSE",
+    "static/media/logo.svg": "/qmind-fantasy-football/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2997142c.js",
+    "static/js/runtime-main.5e6c83b8.js",
     "static/js/2.dc4c3278.chunk.js",
     "static/css/main.d1b05096.chunk.css",
-    "static/js/main.2b947abb.chunk.js"
+    "static/js/main.ee77b717.chunk.js"
   ]
 }

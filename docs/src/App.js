@@ -6,9 +6,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Hello Fantasy Football!
+        Hello Fantasy Football Fans!
           <p>
-              We're using ML to determine the best picks for your NFL fantasy draft picks.
+              Are you ready for a winning team?
+              We're using ML to determine the best picks for your NFL fantasy drafts.
           </p>
       </header>
     </div>

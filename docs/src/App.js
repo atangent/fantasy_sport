@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -10,6 +9,7 @@ function App() {
           <p>
               Are you ready for a winning team?
               We're using ML to determine the best picks for your NFL fantasy drafts.
+              Check us out in Toronto at CUCAI on March 6-8
           </p>
       </header>
     </div>

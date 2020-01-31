@@ -3,6 +3,7 @@ from sklearn import datasets, linear_model
 from sklearn.model_selection import train_test_split
 from matplotlib import pyplot as plt
 """
+HOW TO CALCULATE FANTASY POINTS
 passing yards - 1 point /25 yards
 passing touchdowns - 4 points
 passing interceptions - -2 points
@@ -15,7 +16,7 @@ receiving touchdowns - 6 points
 fumbles lost - -2 points
 fumble recovered before touchdown - 6 points
 """
-
+# Code to train model for best from article 
 data = pd.read_csv("student-mat.csv", sep=";")
 data = data[["G1", "G2", "G3", "studytime", "failures", "absences"]]
 predict = "G3"

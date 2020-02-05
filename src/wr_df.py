@@ -19,6 +19,16 @@ wr_2017 = pd.read_csv("../data/Receiving "
 wr_2018 = pd.read_csv("../data/Receiving "
                        "Stats/2018_Receiving_stats.csv")
 
+wr_fantasy_2013 = pd.read_csv("../data/Fantasy Stats/2013_fantasy_stats.csv")
+wr_fantasy_2014 = pd.read_csv("../data/Fantasy Stats/2014_fantasy_stats.csv")
+wr_fantasy_2015 = pd.read_csv("../data/Fantasy Stats/2015_fantasy_stats.csv")
+wr_fantasy_2016 = pd.read_csv("../data/Fantasy Stats/2016_fantasy_stats.csv")
+wr_fantasy_2017 = pd.read_csv("../data/Fantasy Stats/2017_fantasy_stats.csv")
+wr_fantasy_2018 = pd.read_csv("../data/Fantasy Stats/2018_fantasy_stats.csv")
+
+# Join stats w fantasy ranks and points
+wr
+
 # Join dataframes based on unique player id
 wr_2013_2014 = pd.merge(wr_2013, wr_2014, how="left", on=["Player", "Player"])
 wr_2014_2015 = pd.merge(wr_2014, wr_2015, how="left", on=["Player", "Player"])

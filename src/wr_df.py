@@ -1,8 +1,6 @@
 import pandas as pd
 
 # Import regular stats
-from numpy import sort
-
 wr_2013 = pd.read_csv("../data/Receiving Stats/2013_Receiving_stats.csv")
 wr_2014 = pd.read_csv("../data/Receiving Stats/2014_Receiving_stats.csv")
 wr_2015 = pd.read_csv("../data/Receiving Stats/2015_Receiving_stats.csv")
@@ -35,16 +33,8 @@ wr_2017_2018 = pd.merge(wr_all_2017, wr_all_2018, how="left", on=["Player", "Pla
 
 # Concatenate all frames below one another
 wr_dfs = [wr_2013_2014, wr_2014_2015, wr_2015_2016, wr_2016_2017, wr_2017_2018]
-<<<<<<< HEAD
-<<<<<<< HEAD
-wr_df = pd.concat(wr_dfs, sort-True)
+wr_df = pd.concat(wr_dfs)
 
 # Fill empty vals with 0
 wr_df = wr_df.fillna(0)
-=======
-wr_df = pd.concat(wr_dfs)
->>>>>>> parent of 4e29cd88... Merge remote-tracking branch 'origin/master'
-=======
-wr_df = pd.concat(wr_dfs)
->>>>>>> parent of 4e29cd88... Merge remote-tracking branch 'origin/master'
 wr_df_csv = wr_df.to_csv('../data/Dataframes/wr_df.csv')

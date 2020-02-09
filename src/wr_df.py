@@ -34,4 +34,7 @@ wr_2017_2018 = pd.merge(wr_all_2017, wr_all_2018, how="left", on=["Player", "Pla
 # Concatenate all frames below one another
 wr_dfs = [wr_2013_2014, wr_2014_2015, wr_2015_2016, wr_2016_2017, wr_2017_2018]
 wr_df = pd.concat(wr_dfs)
+
+# Fill empty vals with 0
+wr_df = wr_df.fillna(0)
 wr_df_csv = wr_df.to_csv('../data/Dataframes/wr_df.csv')

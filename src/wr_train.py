@@ -46,11 +46,11 @@ for _ in range(50):
     # If current model has better score than max, save as max
     if accuracy > best:
         best = accuracy
-        with open("../data/pickle/wr.pickle", "wb") as f:
+        with open("../../data/pickle/wr.pickle", "wb") as f:
             pickle.dump(linear, f)
 
 # Load model
-pickle_in = open("../data/pickle/wr.pickle", "rb")
+pickle_in = open("../../data/pickle/wr.pickle", "rb")
 linear = pickle.load(pickle_in)
 
 print("Coefficient: ", linear.coef_)

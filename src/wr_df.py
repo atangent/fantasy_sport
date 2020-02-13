@@ -1,4 +1,5 @@
 import pandas as pd
+import pickle
 
 # Import regular stats
 wr_2013 = pd.read_csv("../data/Receiving Stats/2013_Receiving_stats.csv")
@@ -36,4 +37,5 @@ wr_dfs = [wr_2013_2014, wr_2014_2015, wr_2015_2016, wr_2016_2017, wr_2017_2018]
 wr_df = pd.concat(wr_dfs, sort=False)
 # Fill empty vals with 0
 wr_df = wr_df.fillna(0)
-wr_df_csv = wr_df.to_csv('../data/Dataframes/wr_df.csv')
+# Saves object
+wr_df_pkl = wr_df.to_pickle('../data/Dataframes/wr_df.pkl')

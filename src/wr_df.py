@@ -39,4 +39,4 @@ wr_df = pd.concat(wr_dfs, sort=False)
 # Fill empty vals with 0
 wr_df = wr_df.fillna(0)
 # Saves object
-wr_df_csv = wr_df.to_csv('../data/Dataframes/wr_df.csv', encoding='utf-8', index=False)
+wr_df_csv = wr_df.to_csv('wr_df.csv', encoding='utf-8', index=False)

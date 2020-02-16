@@ -38,5 +38,10 @@ wr_df = pd.concat(wr_dfs, sort=False)
 
 # Fill empty vals with 0
 wr_df = wr_df.fillna(0)
+wr_df = pd.DataFrame(wr_df)
+
 # Saves object
-wr_df_csv = wr_df.to_csv('../data/Dataframes/wr_df.csv', encoding='utf-8', index=False)
+with open('../data/Dataframes/wr_df.txt', 'w') as csv_file:
+    wr_df_csv = wr_df.to_csv(path_or_buf=csv_file)
+print(wr_df)
+print(wr_df_csv)

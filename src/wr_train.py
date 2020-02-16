@@ -24,7 +24,7 @@ fumble recovered before touchdown - 6 points
 """
 # Link to csv
 cd = os.getcwd()
-data = pd.read_csv(cd + '/data/Dataframes/wr_df.csv', sep=",")
+data = pd.read_csv(cd + r'/data/Dataframes/wr_df.csv', sep=",")
 # Trim data with only inputs needed
 data = data[["Age_x", "G_x", "Gs_x", "Tgt_x", "Rec_x", "Ctch%_x", "Yds_x", "Y/R_x", "TD_x", "1D_x",
              "Lng_x", "Y/Tgt_x", "R/G_x", "Y/G_x", "Fmb_x", "FanPt_x", "FanPosRank_x", "FanOvRank_x"]]

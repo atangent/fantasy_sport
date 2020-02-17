@@ -24,10 +24,10 @@ fumble recovered before touchdown - 6 points
 """
 # Link to csv
 cd = os.getcwd()
-data = pd.read_csv(cd + r'/data/Dataframes/wr_df.csv', sep=",")
+data = pd.read_csv('wr_df.csv')
 # Trim data with only inputs needed
-data = data[["Age_x", "G_x", "Gs_x", "Tgt_x", "Rec_x", "Ctch%_x", "Yds_x", "Y/R_x", "TD_x", "1D_x",
-             "Lng_x", "Y/Tgt_x", "R/G_x", "Y/G_x", "Fmb_x", "FanPt_x", "FanPosRank_x", "FanOvRank_x"]]
+data = data[["Age_x", "G_x", "GS_x", "Tgt_x", "Rec_x", "Ctch%_x", "Yds_x", "Y/R_x", "TD_x", "1D_x",
+             "Lng_x", "Y/Tgt_x", "R/G_x", "Y/G_x", "Fmb_x", "FantPt_x", "FanPosRank_x", "FanOvRank_x"]]
 # Separate data
 predict = "FanPt_y"
 # Features
@@ -35,12 +35,12 @@ x = np.array(data[drop([predict], 1)])
 # Label
 y = np.array(data[predict])
 # Split into training testing
-x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.2)
+#x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.2)
 
 # Fun part. Train multiple models. Linear regression on steroids
 best = 0
 for _ in range(50):
-    x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.2)
+    x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=0.2)
     linear = linear_model.LinearRegression()
     linear.fit(x_train, y_train)
     accuracy = linear.score(x_test, y_test)

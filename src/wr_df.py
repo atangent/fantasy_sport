@@ -41,7 +41,7 @@ wr_df = wr_df.fillna(0)
 wr_df = pd.DataFrame(wr_df)
 
 # Saves object
-with open('../data/Dataframes/wr_df.txt', 'w') as csv_file:
+with open('../data/Dataframes/wr_df.csv', 'w') as csv_file:
     wr_df_csv = wr_df.to_csv(path_or_buf=csv_file)
 print(wr_df)
 print(wr_df_csv)

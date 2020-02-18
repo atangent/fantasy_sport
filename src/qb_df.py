@@ -30,7 +30,7 @@ qb_2017_2018 = pd.merge(qb_2017, qb_2018, how="left", on=["Player", "Player"])
 # Concatenate all frames below one another
 qb_dfs = [qb_2013_2014, qb_2014_2015, qb_2015_2016, qb_2016_2017, qb_2017_2018]
 qb_df = pd.concat(qb_dfs)
-qb_df_csv = qb_df.to_csv(r'C:\Users\adamf\PycharmProjects\QMind QB\qmind-fantasy-football\src\qb_df.csv', index = None, header=True)
+qb_df_csv = qb_df.to_csv('../data/Dataframes/qb_df.csv', index=None, header=True)
 
 print(qb_2013_2014)
 

@@ -1,21 +1,42 @@
 import pandas as pd
 import pickle
+import re
+
+
+def player_name_clean(player_id):  # Separates the Player's name from the weird ID tag
+    clean_id = re.split(r'\+|\*|\\', player_id, 1)  # Splits the string at the first instance of a +, *, or \
+    return clean_id[0]  # Returns just the player's name
+
 
 # Import regular stats
 wr_2013 = pd.read_csv('../data/Receiving Stats/2013_Receiving_stats.csv')
+wr_2013['Player'] = wr_2013['Player'].apply(player_name_clean)
 wr_2014 = pd.read_csv('../data/Receiving Stats/2014_Receiving_stats.csv')
+wr_2014['Player'] = wr_2014['Player'].apply(player_name_clean)
 wr_2015 = pd.read_csv('../data/Receiving Stats/2015_Receiving_stats.csv')
+wr_2015['Player'] = wr_2015['Player'].apply(player_name_clean)
 wr_2016 = pd.read_csv('../data/Receiving Stats/2016_Receiving_stats.csv')
+wr_2016['Player'] = wr_2016['Player'].apply(player_name_clean)
 wr_2017 = pd.read_csv('../data/Receiving Stats/2017_Receiving_stats.csv')
+wr_2017['Player'] = wr_2017['Player'].apply(player_name_clean)
 wr_2018 = pd.read_csv('../data/Receiving Stats/2018_Receiving_stats.csv')
+wr_2018['Player'] = wr_2018['Player'].apply(player_name_clean)
 
 # Import fantasy stats
 wr_fantasy_2013 = pd.read_csv('../data/Fantasy Stats/2013_fantasy_stats.csv')
+wr_fantasy_2013['Player'] = wr_fantasy_2013['Player'].apply(player_name_clean)
 wr_fantasy_2014 = pd.read_csv('../data/Fantasy Stats/2014_fantasy_stats.csv')
+wr_fantasy_2014['Player'] = wr_fantasy_2014['Player'].apply(player_name_clean)
 wr_fantasy_2015 = pd.read_csv('../data/Fantasy Stats/2015_fantasy_stats.csv')
+wr_fantasy_2015['Player'] = wr_fantasy_2015['Player'].apply(player_name_clean)
 wr_fantasy_2016 = pd.read_csv('../data/Fantasy Stats/2016_fantasy_stats.csv')
+wr_fantasy_2016['Player'] = wr_fantasy_2016['Player'].apply(player_name_clean)
 wr_fantasy_2017 = pd.read_csv('../data/Fantasy Stats/2017_fantasy_stats.csv')
+wr_fantasy_2017['Player'] = wr_fantasy_2017['Player'].apply(player_name_clean)
 wr_fantasy_2018 = pd.read_csv('../data/Fantasy Stats/2018_fantasy_stats.csv')
+wr_fantasy_2018['Player'] = wr_fantasy_2018['Player'].apply(player_name_clean)
+
+print(wr_fantasy_2018)
 
 # Join stats w fantasy ranks and points
 wr_all_2013 = pd.merge(wr_2013, wr_fantasy_2013, how='left', on=['Player', 'Player'])

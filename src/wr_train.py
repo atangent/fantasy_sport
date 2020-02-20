@@ -31,7 +31,7 @@ data = data[["Age_x", "G_x", "GS_x", "Tgt_x", "Rec_x", "Ctch%_x", "Yds_x", "Y/R_
 # Separate data
 predict = "FanPt_y"
 # Features
-x = np.array(data[drop([predict], 1)])
+x = np.array(data.drop([predict], 1))
 # Label
 y = np.array(data[predict])
 # Split into training testing

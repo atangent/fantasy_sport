@@ -27,20 +27,6 @@ rb_2016 = merge_w_fantasy("../data/Rushing Stats/2016_Rushing_stats.csv", "../da
 rb_2017 = merge_w_fantasy("../data/Rushing Stats/2017_Rushing_stats.csv", "../data/Fantasy Stats/2017_fantasy_stats.csv")
 rb_2018 = merge_w_fantasy("../data/Rushing Stats/2018_Rushing_stats.csv", "../data/Fantasy Stats/2018_fantasy_stats.csv")
 
-# Import csv files
-# rb_2013 = pd.read_csv("../data/Rushing Stats/2013_Rushing_stats.csv")
-# rb_2013['Player'] = rb_2013['Player'].apply(player_name_clean)
-# rb_2014 = pd.read_csv("../data/Rushing Stats/2014_Rushing_stats.csv")
-# rb_2014['Player'] = rb_2014['Player'].apply(player_name_clean)
-# rb_2015 = pd.read_csv("../data/Rushing Stats/2015_Rushing_stats.csv")
-# rb_2015['Player'] = rb_2015['Player'].apply(player_name_clean)
-# rb_2016 = pd.read_csv("../data/Rushing Stats/2016_Rushing_stats.csv")
-# rb_2016['Player'] = rb_2016['Player'].apply(player_name_clean)
-# rb_2017 = pd.read_csv("../data/Rushing Stats/2017_Rushing_stats.csv")
-# rb_2017['Player'] = rb_2017['Player'].apply(player_name_clean)
-# rb_2018 = pd.read_csv("../data/Rushing Stats/2018_Rushing_stats.csv")
-# rb_2018['Player'] = rb_2018['Player'].apply(player_name_clean)
-
 # Join dataframes based on unique player id
 rb_2013_2014 = pd.merge(rb_2013, rb_2014, how="left", on=["Player", "Player"])
 rb_2014_2015 = pd.merge(rb_2014, rb_2015, how="left", on=["Player", "Player"])

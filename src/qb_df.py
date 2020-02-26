@@ -27,19 +27,6 @@ qb_2016 = merge_w_fantasy("../data/QB Stats/2016_QBPassing_stats.csv", "../data/
 qb_2017 = merge_w_fantasy("../data/QB Stats/2017_QBPassing_stats.csv", "../data/Fantasy Stats/2017_fantasy_stats.csv")
 qb_2018 = merge_w_fantasy("../data/QB Stats/2018_QBPassing_stats.csv", "../data/Fantasy Stats/2018_fantasy_stats.csv")
 
-# qb_2013 = pd.read_csv("../data/QB Stats/2013_QBPassing_stats.csv")
-# qb_2013['Player'] = qb_2013['Player'].apply(player_name_clean)  # Cleans the Player's name column
-# qb_2014 = pd.read_csv("../data/QB Stats/2014_QBPassing_stats.csv")
-# qb_2014['Player'] = qb_2014['Player'].apply(player_name_clean)
-# qb_2015 = pd.read_csv("../data/QB Stats/2015_QBPassing_stats.csv")
-# qb_2015['Player'] = qb_2015['Player'].apply(player_name_clean)
-# qb_2016 = pd.read_csv("../data/QB Stats/2016_QBPassing_stats.csv")
-# qb_2016['Player'] = qb_2016['Player'].apply(player_name_clean)
-# qb_2017 = pd.read_csv("../data/QB Stats/2017_QBPassing_stats.csv")
-# qb_2017['Player'] = qb_2017['Player'].apply(player_name_clean)
-# qb_2018 = pd.read_csv("../data/QB Stats/2018_QBPassing_stats.csv")
-# qb_2018['Player'] = qb_2018['Player'].apply(player_name_clean)
-
 # Join dataframes based on unique player id
 qb_2013_2014 = pd.merge(qb_2013, qb_2014, how="left", on=["Player", "Player"])
 qb_2014_2015 = pd.merge(qb_2014, qb_2015, how="left", on=["Player", "Player"])

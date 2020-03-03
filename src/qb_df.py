@@ -27,6 +27,9 @@ qb_2016 = merge_w_fantasy("../data/QB Stats/2016_QBPassing_stats.csv", "../data/
 qb_2017 = merge_w_fantasy("../data/QB Stats/2017_QBPassing_stats.csv", "../data/Fantasy Stats/2017_fantasy_stats.csv")
 qb_2018 = merge_w_fantasy("../data/QB Stats/2018_QBPassing_stats.csv", "../data/Fantasy Stats/2018_fantasy_stats.csv")
 
+qb_2019 = merge_w_fantasy("../data/QB Stats/2019_QBPassing_stats.csv", "../data/Fantasy Stats/2019_fantasy_stats.csv")
+qb_df_csv = qb_2019.to_csv('../data/Dataframes/qb_2019_df.csv', index=None, header=True)
+
 # Join dataframes based on unique player id
 qb_2013_2014 = pd.merge(qb_2013, qb_2014, how="left", on=["Player", "Player"])
 qb_2014_2015 = pd.merge(qb_2014, qb_2015, how="left", on=["Player", "Player"])

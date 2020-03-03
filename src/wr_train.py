@@ -38,7 +38,7 @@ def score_model(test_outputs, true_outputs):
 
 def create_model(independent, dependent, pickle_path):
     best_score = 100000
-    for _ in range(3000):
+    for _ in range(10000):
         x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(independent, dependent, test_size=0.2)
         linear = linear_model.LinearRegression()
         linear.fit(x_train, y_train)
@@ -99,3 +99,24 @@ print("Median Error (Fmbs): " + str(round(re_fumble_score, 1)) + "\nMedian Error
 
 # for i in range(len(re_fumble_pred)):
 #     print("Predicted: " + str(np.round(re_fumble_pred[i], 0)) + "\tActual: " + str(re_fumble_true[i]))
+
+data_2019 = pd.read_csv('../data/Dataframes/wr_2019_df.csv')
+re_yard_2019 = data_2019[['Yds', 'Y/R', 'Y/G', 'FantPt']].fillna(0)
+re_tds_2019 = data_2019[['Rec', 'Y/R', 'TD', 'FantPt']].fillna(0)
+re_fmb_2019 = data_2019[['Ctch%', 'R/G', 'Fmb', 'FantPt']].fillna(0)
+
+rec_fmb = pickle.load(open('../data/pickle/receiving_fumbles.pickle', "rb"))
+rec_tds = pickle.load(open('../data/pickle/receiving_tds.pickle', "rb"))
+rec_yards = pickle.load(open('../data/pickle/receiving_yards.pickle', "rb"))
+
+# Predict each stat
+predict_tds = rec_tds.predict(re_tds_2019)
+predict_fmb = rec_fmb.predict(re_fmb_2019)
+predict_yards = rec_yards.predict(re_yard_2019)
+
+r_tds = pd.DataFrame(predict_tds)
+r_tds.to_csv('../data/retds.csv')
+r_yards = pd.DataFrame(predict_yards)
+r_yards.to_csv('../data/reyards.csv')
+r_fmb = pd.DataFrame(predict_fmb)
+r_fmb.to_csv('../data/refmb.csv')

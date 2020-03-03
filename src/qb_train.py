@@ -38,7 +38,7 @@ def score_model(test_outputs, true_outputs):
 
 def create_model(independent, dependent, pickle_path):
     best_score = 100000
-    for _ in range(3000):
+    for _ in range(10000):
         x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(independent, dependent, test_size=0.2)
         linear = linear_model.LinearRegression()
         linear.fit(x_train, y_train)
@@ -80,24 +80,50 @@ p_yard_pred, p_yard_true, p_yard_score = full_process(p_yard_features, predict_p
 p_tds_pred, p_tds_true, p_tds_score = full_process(p_tds_features, predict_p_tds, 'passing_tds')
 p_ints_pred, p_ints_true, p_ints_score = full_process(p_ints_features, predict_p_ints, 'passing_ints')
 
+# print("Median Error (yards): " + str(round(p_yard_score, 1)) + "\nMedian Error (fantasy points): "
+#       + str(round(p_yard_score/25, 1)))
+#
+# # for i in range(len(p_yard_pred)):
+# #     if p_yard_true[i] > 100:
+# #         print("Predicted: " + str(np.round(p_yard_pred[i], 1)) + "\tActual: " + str(p_yard_true[i]))
+#
+# print("Median Error (TDs): " + str(round(p_tds_score, 1)) + "\nMedian Error (fantasy points): "
+#        + str(round(p_tds_score*4, 1)))
+#
+# # for i in range(len(p_tds_pred)):
+# #     if p_yard_true[i] > 3:
+# #         print("Predicted: " + str(np.round(p_tds_pred[i], 0)) + "\tActual: " + str(p_tds_true[i]))
+#
+# print("Median Error (Ints): " + str(round(p_ints_score, 1)) + "\nMedian Error (fantasy points): "
+#       + str(round(p_ints_score*2, 1)))
+#
+# # for i in range(len(p_tds_pred)):
+# #     if p_yard_true[i] > 3:
+# #         print("Predicted: " + str(np.round(p_tds_pred[i], 0)) + "\tActual: " + str(p_tds_true[i]))
 
-print("Median Error (yards): " + str(round(p_yard_score, 1)) + "\nMedian Error (fantasy points): "
-      + str(round(p_yard_score/25, 1)))
+data_2019 = pd.read_csv('../data/Dataframes/qb_2019_df.csv')
+p_yard_2019 = data_2019[['Cmp', 'Yds', 'Y/G', 'Rate', 'FantPt']].fillna(0)
+p_tds_2019 = data_2019[['Cmp%', 'TD', 'TD%', 'Int', 'Int%', 'Rate', 'FantPt']].fillna(0)
+p_ints_2019 = data_2019[['Cmp%', 'Int', 'Int%', 'Rate', 'ANY/A', 'FantPt']].fillna(0)
 
-# for i in range(len(p_yard_pred)):
-#     if p_yard_true[i] > 100:
-#         print("Predicted: " + str(np.round(p_yard_pred[i], 1)) + "\tActual: " + str(p_yard_true[i]))
+passing_ints = pickle.load(open('../data/pickle/passing_ints.pickle', "rb"))
+passing_tds = pickle.load(open('../data/pickle/passing_tds.pickle', "rb"))
+passing_yards = pickle.load(open('../data/pickle/passing_yards.pickle', "rb"))
 
-print("Median Error (TDs): " + str(round(p_tds_score, 1)) + "\nMedian Error (fantasy points): "
-       + str(round(p_tds_score*4, 1)))
+# Predict each stat
+predict_tds = passing_tds.predict(p_tds_2019)
+predict_ints = passing_ints.predict(p_ints_2019)
+predict_yards = passing_yards.predict(p_yard_2019)
 
-# for i in range(len(p_tds_pred)):
-#     if p_yard_true[i] > 3:
-#         print("Predicted: " + str(np.round(p_tds_pred[i], 0)) + "\tActual: " + str(p_tds_true[i]))
+p_tds = pd.DataFrame(predict_tds)
+p_tds.to_csv('../data/ptds.csv')
+p_yards = pd.DataFrame(predict_yards)
+p_yards.to_csv('../data/pyards.csv')
+p_ints = pd.DataFrame(predict_ints)
+p_ints.to_csv('../data/pints.csv')
 
-print("Median Error (Ints): " + str(round(p_ints_score, 1)) + "\nMedian Error (fantasy points): "
-      + str(round(p_ints_score*2, 1)))
+# Join it with the stat's df under the column "Predicted [Stat_name]"
+# Save as .csv
 
-# for i in range(len(p_tds_pred)):
-#     if p_yard_true[i] > 3:
-#         print("Predicted: " + str(np.round(p_tds_pred[i], 0)) + "\tActual: " + str(p_tds_true[i]))
+
+

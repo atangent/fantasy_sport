@@ -38,7 +38,7 @@ def score_model(test_outputs, true_outputs):
 
 def create_model(independent, dependent, pickle_path):
     best_score = 100000
-    for _ in range(3000):
+    for _ in range(10000):
         x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(independent, dependent, test_size=0.2)
         linear = linear_model.LinearRegression()
         linear.fit(x_train, y_train)
@@ -81,20 +81,41 @@ r_fumble_pred, r_fumble_true, r_fumble_score = full_process(r_fumble_features, p
 
 print("Median Error (yards): " + str(round(r_yard_score, 1)) + "\nMedian Error (fantasy points): "
       + str(round(r_yard_score/10, 1)))
-
-# for i in range(len(r_yard_pred)):
-#     if r_yard_true[i] > 100:
-#         print("Predicted: " + str(np.round(r_yard_pred[i], 1)) + "\tActual: " + str(r_yard_true[i]))
-
+#
+# # for i in range(len(r_yard_pred)):
+# #     if r_yard_true[i] > 100:
+# #         print("Predicted: " + str(np.round(r_yard_pred[i], 1)) + "\tActual: " + str(r_yard_true[i]))
+#
 print("Median Error (TDs): " + str(round(r_tds_score, 1)) + "\nMedian Error (fantasy points): "
        + str(round(r_tds_score*6, 1)))
-
-# for i in range(len(r_tds_pred)):
-#     if r_tds_true[i] > 1:
-#         print("Predicted: " + str(np.round(r_tds_pred[i], 0)) + "\tActual: " + str(r_tds_true[i]))
-
+#
+# # for i in range(len(r_tds_pred)):
+# #     if r_tds_true[i] > 1:
+# #         print("Predicted: " + str(np.round(r_tds_pred[i], 0)) + "\tActual: " + str(r_tds_true[i]))
+#
 print("Median Error (Fmbs): " + str(round(r_fumble_score, 1)) + "\nMedian Error (fantasy points): "
        + str(round(r_fumble_score*2, 1)))
 
 # for i in range(len(r_fumble_pred)):
 #     print("Predicted: " + str(np.round(r_fumble_pred[i], 0)) + "\tActual: " + str(r_fumble_true[i]))
+
+data_2019 = pd.read_csv('../data/Dataframes/rb_2019_df.csv')
+r_yard_2019 = data_2019[['Yds', 'Y/G', 'Y/A', 'FantPt']].fillna(0)
+r_tds_2019 = data_2019[['Att', 'TD', 'Y/G', 'Y/A', 'FantPt']].fillna(0)
+r_fmb_2019 = data_2019[['Att', 'Fmb', 'Y/G', 'FantPt']].fillna(0)
+
+rushing_fmb = pickle.load(open('../data/pickle/rushing_fumbles.pickle', "rb"))
+rushing_tds = pickle.load(open('../data/pickle/rushing_tds.pickle', "rb"))
+rushing_yards = pickle.load(open('../data/pickle/rushing_yards.pickle', "rb"))
+
+# Predict each stat
+predict_tds = rushing_tds.predict(r_tds_2019)
+predict_fmb = rushing_fmb.predict(r_fmb_2019)
+predict_yards = rushing_yards.predict(r_yard_2019)
+
+r_tds = pd.DataFrame(predict_tds)
+r_tds.to_csv('../data/rtds.csv')
+r_yards = pd.DataFrame(predict_yards)
+r_yards.to_csv('../data/ryards.csv')
+r_fmb = pd.DataFrame(predict_fmb)
+r_fmb.to_csv('../data/rfmb.csv')
